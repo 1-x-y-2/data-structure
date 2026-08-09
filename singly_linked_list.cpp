@@ -182,7 +182,7 @@ LinkList List_TailInsert(LinkList &L) {
 }
 
 // 尾插法建立单链表(不带头结点)
-LinkList List_TailIsert(LinkList &L) {
+LinkList List_TailInsert(LinkList &L) {
     int x;
     L = NULL;
     LNode *s, *r = NULL;

@@ -20,7 +20,7 @@ bool Empty(DLinkList L) {
 
 // 插入结点
 bool InsertNextDNode(DNode *p, DNode *s) {
-    if (p == NULL || s = NULL ) return false;
+    if (p == NULL || s == NULL ) return false;
 
     s -> next = p -> next;
     if (p -> next != NULL) {
