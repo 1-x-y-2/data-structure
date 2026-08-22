@@ -1,4 +1,4 @@
-typedef int ElemType;
+-typedef int ElemType;
 
 typedef struct LNode {
     ElemType data;
@@ -20,7 +20,6 @@ bool Empty(LinkList L) {
 bool InitList(LinkList &L) {
     L = (LNode *)malloc(sizeof(LNode));
     if (L == NULL) return false;
-
     L -> next = NULL;
     return true;
 }
@@ -89,17 +88,21 @@ bool InsertNextNode(LNode *p, ElemType e) {
 }
 
 // 指定结点的前插操作
-bool InsertPriorNode(LNode *p, ElemType e) {
+bool InsertPriorLNode(LNode *p, ElemType e) {
     if (p == NULL) return false;
-    
+
     LNode *s = (LNode *)malloc(sizeof(LNode));
     if (s == NULL) return false;
-    s -> next = p -> next;
-    p -> next = s;
-    s -> data = p -> data;
-    p -> data = e;
+
+    s->next = p->next;
+    p->next = s;
+
+    s->data = p->data;  // 先保存 p 原来的数据
+    p->data = e;        // p 改成新插入的数据
+
     return true;
 }
+
 
 // 按位序删除(带头结点)
 bool ListDelete(LinkList &L, int i, ElemType &e) {
@@ -166,57 +169,73 @@ int Length(LinkList L) {
 
 // 尾插法建立单链表(带头结点)
 LinkList List_TailInsert(LinkList &L) {
+    LNode *s, *r;
     int x;
-    L = (LinkList)malloc(sizeof(LNode));
-    LNode *s, *r = L;
+
+    L = (LinkList)malloc(sizeof(LNode)); // 创建头结点
+    r = L;                              // r初始指向头结点
+
     scanf("%d", &x);
     while (x != 9999) {
         s = (LNode *)malloc(sizeof(LNode));
-        s -> data = x;
-        r -> next = s;
-        r = s;
+        s->data = x;
+
+        r->next = s;   // 新结点接到表尾
+        r = s;         // r指向新的尾结点
+
         scanf("%d", &x);
     }
-    r -> next = NULL;
+
+    r->next = NULL;
     return L;
 }
+
 
 // 尾插法建立单链表(不带头结点)
 LinkList List_TailInsert(LinkList &L) {
+    LNode *s, *r;
     int x;
     L = NULL;
-    LNode *s, *r = NULL;
+    r = NULL;
+
     scanf("%d", &x);
     while (x != 9999) {
         s = (LNode *)malloc(sizeof(LNode));
-        s -> data = x;
-        if (L == NULL) {
-            L = s;
-        } else {
-            r -> next = s;
-        }
-        r = s;
+        s->data = x;
+        s->next = NULL;
 
+        if (L == NULL)
+            L = s;
+        else
+            r->next = s;
+
+        r = s;
         scanf("%d", &x);
     }
 
-    if (r != NULL) r -> next = NULL;
     return L;
 }
 
+
 // 头插法建立单链表(带头结点)
 LinkList List_HeadInsert(LinkList &L) {
+    LNode *s;
     int x;
-    L = (LinkList)malloc(sizeof(LNode));
-    L -> next = NULL;
+
+    L = (LinkList)malloc(sizeof(LNode));  // 创建头结点
+    L->next = NULL;
+
     scanf("%d", &x);
-    while (x != 9999) {
-        LNode *s = (LNode *)malloc(sizeof(LNode));
-        s -> data = x;
-        s -> next = L -> next;
-        L -> next = s;
+    while (x != 9999) {                   // 9999作为结束标志
+        s = (LNode *)malloc(sizeof(LNode));
+        s->data = x;
+
+        s->next = L->next;               // 新结点插到头结点之后
+        L->next = s;
+
         scanf("%d", &x);
     }
+
     return L;
 }
 
