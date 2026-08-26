@@ -1,20 +1,20 @@
 #define MaxSize 50
 
-typedef struct{
+typedef struct {
     ElemType data[MaxSize];
     int front, rear;
 } SqQueue;
 
-void InitQueue(SqQueue &Q){
+void InitQueue(SqQueue &Q) {
     Q.front = Q.rear = 0;
 }
 
-bool QueueEmpty(SqQueue Q){
+bool QueueEmpty(SqQueue Q) {
     return Q.front == Q.rear;
 }
 
-bool EnQueue(SqQueue &Q, ElemType x){
-    if((Q.rear + 1) % MaxSize == Q.front)
+bool EnQueue(SqQueue &Q, ElemType x) {
+    if ((Q.rear + 1) % MaxSize == Q.front)
         return false;
 
     Q.data[Q.rear] = x;
@@ -23,8 +23,8 @@ bool EnQueue(SqQueue &Q, ElemType x){
     return true;
 }
 
-bool DeQueue(SqQueue &Q, ElemType &x){
-    if(Q.front == Q.rear)
+bool DeQueue(SqQueue &Q, ElemType &x) {
+    if (Q.front == Q.rear)
         return false;
 
     x = Q.data[Q.front];
@@ -33,11 +33,10 @@ bool DeQueue(SqQueue &Q, ElemType &x){
     return true;
 }
 
-bool GetHead(SqQueue Q, ElemType &x){
-    if(Q.front == Q.rear)
+bool GetHead(SqQueue Q, ElemType &x) {
+    if (Q.front == Q.rear)
         return false;
 
     x = Q.data[Q.front];
     return true;
 }
-

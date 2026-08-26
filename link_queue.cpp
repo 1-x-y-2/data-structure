@@ -1,24 +1,24 @@
-typedef struct LinkNode{
+typedef struct LinkNode {
     ElemType data;
     struct LinkNode *next;
-}LinkNode;
+} LinkNode;
 
-typedef struct{
+typedef struct {
     LinkNode *front, *rear;
-}LinkQueue;
+} LinkQueue;
 
-void InitQueue(LinkQueue &Q){
+void InitQueue(LinkQueue &Q) {
     Q.front = Q.rear =
         (LinkNode *)malloc(sizeof(LinkNode));
 
     Q.front->next = NULL;
 }
 
-bool QueueEmpty(LinkQueue Q){
+bool QueueEmpty(LinkQueue Q) {
     return Q.front == Q.rear;
 }
 
-void EnQueue(LinkQueue &Q, ElemType x){
+void EnQueue(LinkQueue &Q, ElemType x) {
     LinkNode *s =
         (LinkNode *)malloc(sizeof(LinkNode));
 
@@ -29,8 +29,8 @@ void EnQueue(LinkQueue &Q, ElemType x){
     Q.rear = s;
 }
 
-bool DeQueue(LinkQueue &Q, ElemType &x){
-    if(Q.front == Q.rear)
+bool DeQueue(LinkQueue &Q, ElemType &x) {
+    if (Q.front == Q.rear)
         return false;
 
     LinkNode *p = Q.front->next;
@@ -38,7 +38,7 @@ bool DeQueue(LinkQueue &Q, ElemType &x){
 
     Q.front->next = p->next;
 
-    if(Q.rear == p)
+    if (Q.rear == p)
         Q.rear = Q.front;
 
     free(p);
@@ -46,11 +46,10 @@ bool DeQueue(LinkQueue &Q, ElemType &x){
     return true;
 }
 
-bool GetHead(LinkQueue Q, ElemType &x){
-    if(Q.front == Q.rear)
+bool GetHead(LinkQueue Q, ElemType &x) {
+    if (Q.front == Q.rear)
         return false;
 
     x = Q.front->next->data;
     return true;
 }
-

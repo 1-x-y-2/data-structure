@@ -20,13 +20,13 @@ bool Empty(LinkList L) {
 bool InitList(LinkList &L) {
     L = (LNode *)malloc(sizeof(LNode));
     if (L == NULL) return false;
-    L -> next = NULL;
+    L->next = NULL;
     return true;
 }
 
 // 判空(带头结点)
 bool Empty(LinkList L) {
-    return L -> next == NULL;
+    return L->next == NULL;
 }
 
 // 按位序插入(带头结点)
@@ -36,14 +36,14 @@ bool ListInsert(LinkList &L, int i, ElemType e) {
     LNode *p = L;
     int j = 0;
     while (p != NULL && j < i - 1) {
-        p = p -> next;
+        p = p->next;
         j++;
     }
     if (p == NULL) return false;
     LNode *s = (LNode *)malloc(sizeof(LNode));
-    s -> data = e;
-    s -> next = p -> next;
-    p -> next = s;
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
     return true;
     // return InsertNextNode(p, e);
 }
@@ -54,8 +54,8 @@ bool ListInsert(LinkList &L, int i, ElemType e) {
 
     if (i == 1) {
         LNode *s = (LNode *)malloc(sizeof(LNode));
-        s -> data = e;
-        s -> next = L;
+        s->data = e;
+        s->next = L;
         L = s;
         return true;
     }
@@ -63,14 +63,14 @@ bool ListInsert(LinkList &L, int i, ElemType e) {
     LNode *p = L;
     int j = 1;
     while (p != NULL && j < i - 1) {
-        p = p -> next;
+        p = p->next;
         j++;
     }
     if (p == NULL) return false;
     LNode *s = (LNode *)malloc(sizeof(LNode));
-    s -> data = e;
-    s -> next = p -> next;
-    p -> next = s;
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
     return true;
     // return InsertNextNode(p, e);
 }
@@ -81,9 +81,9 @@ bool InsertNextNode(LNode *p, ElemType e) {
 
     LNode *s = (LNode *)malloc(sizeof(LNode));
     if (s == NULL) return false;
-    s -> data = e;
-    s -> next = p -> next;
-    p -> next = s;
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
     return true;
 }
 
@@ -111,13 +111,13 @@ bool ListDelete(LinkList &L, int i, ElemType &e) {
     int j = 0;
     LNode *p = L;
     while (p != NULL && j < i - 1) {
-        p = p -> next;
+        p = p->next;
         j++;
     }
-    if (p == NULL || p -> next == NULL) return false;
-    LNode *q = p -> next;
-    p -> next = q -> next;
-    e = q -> data;
+    if (p == NULL || p->next == NULL) return false;
+    LNode *q = p->next;
+    p->next = q->next;
+    e = q->data;
     free(q);
     return true;
 }
@@ -126,9 +126,9 @@ bool ListDelete(LinkList &L, int i, ElemType &e) {
 bool DeleteNode(LNode *p) {
     if (p == NULL) return false;
 
-    LNode *q = p -> next;
-    p -> data = q -> data;
-    p -> next = q -> next;
+    LNode *q = p->next;
+    p->data = q->data;
+    p->next = q->next;
     free(q);
     return true;
 }
@@ -140,7 +140,7 @@ LNode *GetElem(LinkList L, int i) {
     int j = 0;
     LNode *p = L;
     while (p != NULL && j < i) {
-        p = p -> next;
+        p = p->next;
         j++;
     }
     return p;
@@ -148,9 +148,9 @@ LNode *GetElem(LinkList L, int i) {
 
 // 按值查找
 LNode *LocateElem(LinkList L, ElemType e) {
-    LNode *p = L -> next;
-    while (p != NULL && p -> data != e) {
-        p = p -> next;
+    LNode *p = L->next;
+    while (p != NULL && p->data != e) {
+        p = p->next;
     }
     return p;
 }
@@ -160,8 +160,8 @@ int Length(LinkList L) {
 
     LNode *p = L;
     int len = 0;
-    while (p -> next != NULL) {
-        p = p -> next;
+    while (p->next != NULL) {
+        p = p->next;
         len++;
     }
     return len;
@@ -246,8 +246,8 @@ LinkList List_HeadInsert(LinkList &L) {
     scanf("%d", &x);
     while (x != 9999) {
         LNode *s = (LNode *)malloc(sizeof(LNode));
-        s -> data = x;
-        s -> next = L;
+        s->data = x;
+        s->next = L;
         L = s;
         scanf("%d", &x);
     }
@@ -256,16 +256,16 @@ LinkList List_HeadInsert(LinkList &L) {
 
 // 反转
 LinkList reverseList(LinkList L) {
-    if (L == NULL || L -> next == NULL) return L; 
+    if (L == NULL || L->next == NULL) return L;
 
-    LNode *p = L -> next;
+    LNode *p = L->next;
     LNode *q;
-    L -> next = NULL;
+    L->next = NULL;
 
     while (p != NULL) {
-        q = p -> next;
-        p -> next = L -> next;
-        L -> next = p;
+        q = p->next;
+        p->next = L->next;
+        L->next = p;
         p = q;
     }
 

@@ -4,12 +4,12 @@ bool InitList(LinkList &L) {
         return false;
     }
 
-    L -> next = L;
+    L->next = L;
     return true;
 }
 
 bool Empty(LinkList L) {
-    return L -> next == L;
+    return L->next == L;
 }
 
 
@@ -17,7 +17,7 @@ bool InitDLinkList(DLinkList &L) {
     L = (DNode *)malloc(sizeof(DNode));
     if (L == NULL) return false;
 
-    L -> prior = L;
-    L -> next = L;
+    L->prior = L;
+    L->next = L;
     return true;
 }
