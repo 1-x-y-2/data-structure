@@ -1,32 +1,27 @@
 #include <stdio.h>
 
-void Print(int a[], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d ", a[i]);
+int MaxSubseqSum(int A[], int N) {
+    int ThisSum = 0;
+    int MaxSum = 0;
+
+    for (int i = 0; i < N; i++) {
+        ThisSum += A[i];
+
+        if (ThisSum > MaxSum) {
+            MaxSum = ThisSum;
+        } else if (ThisSum < 0) {
+            ThisSum = 0;
+        }
     }
-    printf("\n");
+
+    return MaxSum;
 }
 
 int main(void) {
-    int nums[10] = {1, 3, 2, 9, 8, 6, 7, 4, 10, 5};
+    int nums[] = {4, -3, 5, -2, -1, 2, 6, -2};
 
     int n = sizeof(nums) / sizeof(nums[0]);
 
-    for (int i = 0; i < n; i++) {
-        int min = nums[i];
-        int pos = i;
-        for (int j = i; j < n; j++) {
-            if (nums[j] < min) {
-                min = nums[j];
-                pos = j;
-            }
-        }
-        int t = nums[i];
-        nums[i] = nums[pos];
-        nums[pos] = t;
-    }
-
-    Print(nums, n);
-
+    printf("%d\n", MaxSubseqSum(nums, n));
     return 0;
 }
