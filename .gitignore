@@ -1,0 +1,43 @@
+# 编译产物
+/main
+/a.out
+*.o
+*.obj
+*.lo
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+
+# CMake / 常见构建目录
+/build/
+/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+*.d
+*.gch
+
+# 调试与分析文件
+*.gcda
+*.gcno
+*.gcov
+*.profraw
+*.profdata
+core
+core.*
+
+# 编辑器与操作系统文件
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
