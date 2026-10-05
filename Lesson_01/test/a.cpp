@@ -48,4 +48,26 @@ int fact(int n) {
 int count = 0;
 for (int k = 1; k <= n; k *= 2)
     for (int j = 1; j <= n; j++)
+        count++
+
+int func(int n) {
+    int i = 0, sum = 0;
+    while (sum < n) sum += ++i;
+    return i;
+}
+
+int x = 0;
+while (n >= (x + 1) * (x + 1))
+    x += 1;
+
+int sum = 0;
+for (int i = 1; i < n; i *= 2)
+    for (int j = 0; j < i; j++)
+        sum++;
+
+int count = 0, i, j;
+for (i = 1; i * i <= n; i++)
+    for (j = 1; j <= i; j++)
         count++;
+
+ 
